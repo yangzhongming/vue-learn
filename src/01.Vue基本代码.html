@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+</head>
+<body>
+    <!--View层-->
+    <div id="app">
+       <p v-cloak>{{msg}}</p>
+        <h3 v-text="msg"></h3>
+        <p><input type="button" value="按钮" v-bind:title="mytitle"></p>
+       <p><input type="button" value="click"  v-on:click="show"></p>
+    </div>
+<script>
+    <!--VM调度者-->
+    var Vue = new Vue({
+        el:'#app',
+        <!--Model层：存放el中需要使用的数据-->
+        data:{
+            //通过Vue指令将数据渲染到页面，不需要操作DOM元素
+            msg:'hello world!',
+            mytitle:'v-bind title'
+        },
+        methods:{
+            show:function () {
+                alert('Hello,World!!')
+            }
+        }
+    })
+</script>
+</body>
+</html>
