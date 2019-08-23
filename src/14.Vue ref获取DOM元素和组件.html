@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../lib/vue-2.4.0.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap-3.3.7.css">
+</head>
+<body>
+<div id="app">
+    <input type="button" value="按钮" @click="getElement" ref="myBtn">
+    <h3 id="myDom" ref="myDom">ref获取DOM元素</h3>
+    <login ref="mylogin"></login>
+</div>
+
+<script>
+    var login = {
+        template:'<h1>登录组件</h1>',
+        data(){
+            return {
+                msg:'子组件消息'
+            }
+        },
+        methods:{
+            show(){
+                console.log('调用子组件方法...')
+            }
+        }
+    }
+
+    var vm = new Vue({
+        el:'#app',
+        data:{},
+        methods:{
+            getElement(){
+                console.log(this.$refs.myDom.innerText)
+                 console.log(this.$refs.mylogin.msg)
+                this.$refs.mylogin.show()
+            }
+        },
+        components:{
+            login
+        }
+    })
+</script>
+</body>
+</html>
